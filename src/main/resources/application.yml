@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: MedicAgent
+  datasource:
+    url: jdbc:mysql://localhost:3306/medicagent?useUnicode=true&characterEncoding=UTF-8&createDatabaseIfNotExist=true&serverTimezone=Asia/Shanghai&useSSL=true
+    username: your_username
+    password: your_password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/chat_memory_db
+
+server:
+  port: 8080
+
+langchain4j:
+  open-ai:
+    chat-model:
+      api-key: your_key
+      baseUrl: your_url(optional)
+      model-name: gpt-4.1-mini
+      log-requests: true
+      log-responses: true
+    streaming-chat-model:
+      api-key: your_key
+      baseUrl: your_url(optional)
+      model-name: gpt-4.1-mini
+      log-requests: true
+      log-responses: true
+    embedding-model:
+      api-key: your_key
+      baseUrl: your_url(optional)
+      model-name: text-embedding-3-small
+      log-requests: true
+      log-responses: true
+
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+logging:
+  level:
+    root: info
