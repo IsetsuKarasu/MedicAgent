@@ -25,6 +25,8 @@ langchain4j:
       api-key: your_key
       baseUrl: your_url(optional)
       model-name: gpt-4.1-mini
+#      model-name: deepseek-v3.1-250821
+#      model-name: qwen3-235b-a22b-instruct-2507
       log-requests: true
       log-responses: true
     embedding-model:

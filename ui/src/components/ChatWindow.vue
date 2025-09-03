@@ -3,7 +3,7 @@
     <div class="sidebar">
       <div class="logo-section">
         <img src="@/assets/logo.png" alt="MedicAgent" width="160" height="160" />
-        <span class="logo-text">MedicAgent</span>
+        <span class="logo-text">智能健康顾问</span>
       </div>
       <el-button class="new-chat-button" @click="newChat">
         <i class="fa-solid fa-plus"></i>
@@ -30,7 +30,7 @@
             ></i>
             <!-- 会话内容 -->
             <span>
-              <span v-html="message.content"></span>
+              <span v-html="message.content" style="white-space: pre-line;"></span>
               <!-- loading -->
               <span
                 class="loading-dots"
@@ -72,6 +72,13 @@ onMounted(() => {
   initUUID()
   // 移除 setInterval，改用手动滚动
   watch(messages, () => scrollToBottom(), { deep: true })
+  const sysMsg = {
+    isUser: false,
+    content: "注意：\n与您对话的并非真人，而是AI机器人，请注意辨别！",
+    isTyping: false,
+    isThinking: false,
+  }
+  messages.value.push(sysMsg)
   hello()
 })
 
@@ -101,7 +108,7 @@ const sendRequest = (message) => {
     isThinking: false,
   }
   // 第一条默认发送的用户消息”你好“不放入会话列表
-  if(messages.value.length > 0){
+  if(messages.value.length > 1){
     messages.value.push(userMsg)
   }
 
